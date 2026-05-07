@@ -1,141 +1,62 @@
-# 🚀 Space Battle Simulator (C)
+# Space Battle Simulator (C)
 
-<p align="center">
-  <img src="https://img.shields.io/badge/language-C-blue.svg">
-  <img src="https://img.shields.io/badge/project-Algorithmic-green.svg">
-  <img src="https://img.shields.io/badge/status-Academic-orange.svg">
-</p>
+Programme en C qui simule et analyse une partie de bataille spatiale entre deux joueurs (Alice et Bernard) à partir d'un fichier d'entrée. Le programme valide le format de la partie, détecte les coups invalides, simule les tirs et détermine le gagnant.
 
----
+## Contexte
 
-## 📌 Description
+Projet académique réalisé en solo à l'ESIEA (septembre 2023 – janvier 2024) dans le cadre du module **INF1031 – Algorithmique et Programmation** (1ère année).
 
-Ce projet est une application en **langage C** qui simule et analyse une partie de **bataille spatiale** entre deux joueurs (Alice et Bernard).
+## Fonctionnement
 
-Le programme lit un fichier d’entrée représentant une partie, vérifie sa validité, détecte les erreurs et détermine le gagnant.
+Le programme lit la description d'une partie depuis l'entrée standard (`stdin`) :
 
-📖 Le projet s’inscrit dans le cadre du module **INF1031 – Algorithmique et Programmation** .
+1. Taille du plateau et nombre de vaisseaux
+2. Positions initiales des vaisseaux des deux joueurs (chaque vaisseau occupe 3 cases consécutives)
+3. Identité du joueur qui commence
+4. Liste des coups joués, alternés entre les deux joueurs
 
----
+Il analyse ensuite la partie et affiche :
 
-## 🎯 Objectifs
+- La taille du plateau et le nombre de vaisseaux
+- Le nombre total de coups joués
+- Le gagnant (Alice, Bernard ou égalité), ainsi que le nombre de cases restantes pour chaque joueur
 
-* Lire un fichier décrivant une partie de jeu
-* Vérifier la validité des coups
-* Détecter les erreurs (coups interdits, partie incomplète)
-* Simuler la partie coup par coup
-* Déterminer le gagnant ou une égalité
+## Cas d'erreur détectés
 
----
+- **Coup illégal** : un tir hors des limites du plateau → `ILLEGAL MOVE : GAME OVER`
+- **Partie incomplète** : nombre impair de coups → `MISSING MOVE : INCOMPLETE GAME`
 
-## 🧠 Fonctionnalités
+## Exemples de sortie
+BOARD SIZE : 10
+NUMBER OF SPACESHIPS : 2
+NUMBER OF MOVES : 14
+GAME OVER: ALICE WINS : 3 TO 1
+COURSE OVER : GAME OVER
+## Stack technique
 
-### ✅ Validation des données
+- **Langage :** C
+- **Compilation :** gcc
+- **Entrée :** redirection depuis un fichier (`stdin`)
+- **Contraintes du sujet :** pas de variables globales, pas de fonctions de fichier (`fopen`, etc.), uniquement la redirection standard
 
-* Vérification de la taille du plateau
-* Vérification du nombre de vaisseaux
-* Détection des coups invalides
-
-👉 Exemple :
-
-* `ILLEGAL MOVE : GAME OVER`
-* `MISSING MOVE : INCOMPLETE GAME`
-
----
-
-### 🎮 Simulation du jeu
-
-* Alternance des coups entre Alice et Bernard
-* Détection des tirs réussis
-* Mise à jour de l’état des vaisseaux
-
----
-
-### 🏆 Résultat final
-
-Le programme affiche :
-
-* Le nombre total de coups
-* Le gagnant
-* Ou une égalité
-
-👉 Exemple :
-
-* `GAME OVER: ALICE WINS`
-* `GAME OVER: BERNARD WINS`
-* `GAME OVER: TIE`
-
----
-
-## 🛠️ Technologies utilisées
-
-* **Langage :** C
-* **Compilation :** GCC
-* **Entrée :** redirection de fichier (`stdin`)
-
----
-
-## 📂 Structure du projet
-
-```text
-project/
-├── main.c
-├── README.md
-└── input_files/
-```
-
----
-
-## ⚙️ Compilation
+## Compilation et exécution
 
 ```bash
-gcc -Wall -Werror -Wfatal-errors main.c -o game
+gcc -Wall main.c -o game
+./game < partie.dat
 ```
 
----
+## Compétences mises en œuvre
 
-## ▶️ Exécution
+- Programmation en C : tableaux, boucles, fonctions
+- Lecture et parsing d'entrée structurée via `scanf`
+- Logique de validation et de simulation de jeu
+- Respect d'un format d'entrée/sortie strict imposé par un sujet
 
-```bash
-./game < PARTIE_1.dat
-```
+## Auteur
 
-👉 Le programme lit les données depuis un fichier grâce à la redirection standard .
+Projet réalisé en solo par Ahmed Jaziri à l'ESIEA.
 
----
+## Licence
 
-## 📊 Exemple de fonctionnement
-
-Le fichier d’entrée contient :
-
-* taille du plateau
-* positions des vaisseaux
-* liste des coups
-
-Le programme :
-
-1. analyse les données
-2. vérifie leur validité
-3. simule la partie
-4. affiche le résultat
-
----
-
-## ⚠️ Contraintes importantes
-
-* ❌ Pas de variables globales
-* ❌ Pas de fonctions de fichiers (`fopen`, etc.)
-* ✅ Utilisation de la redirection (`stdin`)
-* ✅ Respect strict du format de sortie
-
----
-
-## 👨‍💻 Auteurs
-
-* Ahmed Jaziri
-
----
-
-## 📜 Licence
-
-Projet académique (ESIEA).
+Projet académique à but pédagogique.
